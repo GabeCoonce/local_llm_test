@@ -1,0 +1,24 @@
+[package]
+name = "local_llm_test"
+version = "0.1.0"
+edition = "2021"
+
+# ── Optional hardware-acceleration features ──────────────────────────────────
+# Build with `--features metal`     for Apple Silicon / Metal GPU
+# Build with `--features cuda`      for NVIDIA GPU
+# Build with `--features accelerate` for Apple Accelerate (CPU BLAS)
+[features]
+default = []
+metal      = ["candle-core/metal",      "candle-nn/metal",      "candle-transformers/metal"]
+cuda       = ["candle-core/cuda",       "candle-nn/cuda",       "candle-transformers/cuda"]
+accelerate = ["candle-core/accelerate", "candle-nn/accelerate", "candle-transformers/accelerate"]
+
+[dependencies]
+anyhow              = "1"
+candle-core         = "0.10.2"
+candle-nn           = "0.10.2"
+candle-transformers = "0.10.2"
+clap                = { version = "4", features = ["derive"] }
+hf-hub              = "0.5.0"
+serde_json          = "1"
+tokenizers          = "0.22.2"
